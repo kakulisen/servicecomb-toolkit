@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 {{#imports}}import {{import}};
 {{/imports}}
-import {{modelPackage}}.*;
+{{#models}}import {{importPath}};{{/models}}
 import org.apache.servicecomb.provider.rest.common.RestSchema;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestSchema(schemaId = "{{#camelcase}}{{classname}}{{/camelcase}}")
-@RequestMapping(value = "/", produces = {APPLICATION_JSON_VALUE})
+@RequestMapping(value = "{{#getRelativeBasePath}}{{basePath}}{{/getRelativeBasePath}}", produces = {APPLICATION_JSON_VALUE})
 {{#operations}}
 public class {{classname}} {
 {{#operation}}

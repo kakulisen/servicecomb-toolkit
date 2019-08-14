@@ -24,15 +24,30 @@ class ReflectUtils {
   static Object getProperty(Object obj, String propName) {
 
     try {
-      Field propFiled = obj.getClass().getDeclaredField(propName);
+      Field propFiled = getFiled(obj.getClass(), propName);
+
+      if (propFiled == null) {
+        return null;
+      }
       propFiled.setAccessible(true);
       return propFiled.get(obj);
-    } catch (NoSuchFieldException e) {
-      e.printStackTrace();
     } catch (IllegalAccessException e) {
       e.printStackTrace();
     }
 
+    return null;
+  }
+
+  private static Field getFiled(Class cls, String propName) {
+    try {
+      return cls.getDeclaredField(propName);
+    } catch (NoSuchFieldException e) {
+      if (cls.getSuperclass() != null) {
+        return getFiled(cls.getSuperclass(), propName);
+      } else {
+        e.printStackTrace();
+      }
+    }
     return null;
   }
 }

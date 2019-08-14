@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>toolkit-maven-plugin-demo</artifactId>
+    <groupId>org.apache.servicecomb.toolkit</groupId>
+    <version>0.1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>booking</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.servicecomb.toolkit</groupId>
+        <artifactId>toolkit-maven-plugin</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <configuration>
+          <!-- 输入源。设置为 code，表示解析当前代码；设置为 contract，表示解析指定目录的契约文件。不设置则默认为 code -->
+          <sourceType>code</sourceType>
+          <!-- 生成契约文件、文档的根目录，不设置则默认为运行命令所在目录下的 target 目录，生成的微服务工程在 project 目录，契约文件在 contract 目录，文档在 document 目录 -->
+          <outputDirectory>./out</outputDirectory>
+          <!-- 生成的微服务代码工程配置 -->
+          <service>
+            <!-- 微服务的类型，可生成 provider/consumer/all，默认值为 all -->
+            <serviceType>all</serviceType>
+            <artifactId>toolkit-maven-plugin-demo</artifactId>
+            <groupId>org.apache.servicecomb.toolkit</groupId>
+          </service>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.servicecomb</groupId>
+      <artifactId>spring-boot-starter-provider</artifactId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.servicecomb</groupId>
+        <artifactId>java-chassis-dependencies</artifactId>
+        <version>${java.chassis.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
