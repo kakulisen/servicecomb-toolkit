@@ -110,6 +110,7 @@
     <module>core</module>
     <module>integration-tests</module>
     <module>contractgen</module>
+    <module>oas-generator</module>
   </modules>
 
   <dependencyManagement>
@@ -153,6 +154,30 @@
       <dependency>
         <groupId>org.apache.servicecomb.toolkit</groupId>
         <artifactId>toolkit-maven-plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.servicecomb.toolkit</groupId>
+        <artifactId>oas-generator-servicecomb</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.servicecomb.toolkit</groupId>
+        <artifactId>oas-generator-jaxrs</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.servicecomb.toolkit</groupId>
+        <artifactId>oas-generator-spring</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.servicecomb.toolkit</groupId>
+        <artifactId>oas-generator-core</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
