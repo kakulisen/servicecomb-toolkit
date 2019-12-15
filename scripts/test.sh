@@ -45,12 +45,12 @@ else
   fi
   
   echo "${green}[SCRIPT] TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST${reset}"
-  if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    echo "${green}[SCRIPT] It's not a PR build, enable sonar.${reset}"
-    MVN_CMD="$MVN_CMD sonar:sonar -Dsonar.projectKey=servicecomb-toolkit"
-  else
-    echo "${green}[SCRIPT] It's a PR build or local build.${reset}"
-  fi;
+#  if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+#    echo "${green}[SCRIPT] It's not a PR build, enable sonar.${reset}"
+#    MVN_CMD="$MVN_CMD sonar:sonar -Dsonar.projectKey=servicecomb-toolkit"
+#  else
+#    echo "${green}[SCRIPT] It's a PR build or local build.${reset}"
+#  fi;
   
   echo "${green}[SCRIPT] Running unit and integration tests.${reset}"
   mvn $MVN_CMD
